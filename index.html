@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tiru Health — Trusted digital infrastructure for healthcare</title>
+<meta name="description" content="Find trusted healthcare across Addis Ababa with Tiru Medical Directory, and run stronger facilities with Tiru Ops. Digital health infrastructure built by clinicians in Ethiopia." />
+<meta name="theme-color" content="#FCFDFC" id="metaTheme" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="Tiru Health — Trusted digital infrastructure for healthcare" />
+<meta property="og:description" content="Tiru Medical Directory helps people find trusted care. Tiru Ops helps facilities deliver it. Built by clinicians in Addis Ababa." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tiruhealth.com" />
+<meta property="og:locale" content="en" />
+<link rel="canonical" href="https://tiruhealth.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Noto+Serif+Ethiopic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23D3A24A'/><text x='50' y='54' font-size='44' fill='%2306201C' text-anchor='middle' dominant-baseline='central' font-family='Noto Serif Ethiopic,serif'>%E1%8C%A5%E1%88%A9</text></svg>">
+
+<!-- set theme before paint so there is no flash -->
+<script>
+(function(){
+  var t;
+  try{ t = localStorage.getItem('tiru-theme'); }catch(e){}
+  if(!t){ t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+
+<style>
+/* ============================================================
+   TIRU HEALTH — tokens
+   Brand constants stay fixed; semantic tokens flip with theme.
+   ============================================================ */
+:root{
+  /* brand constants */
+  --forest:#10463D;
+  --spruce:#1B6B5C;
+  --mint:#6FCFB4;
+  --gold:#D3A24A;
+  --gold-soft:#F1E2C4;
+
+  /* semantic — light */
+  --bg:#FCFDFC;
+  --bg-alt:#EDF2EF;
+  --surface:#FFFFFF;
+  --text:#06201C;
+  --muted:#4A5C58;
+  --line:#DCE6E2;
+  --accent:#1B6B5C;
+  --btn-bg:#10463D;
+  --btn-fg:#FFFFFF;
+  --nav-bg:rgba(252,253,252,.88);
+  --shadow:rgba(6,32,28,.42);
+  --cta-bg:#10463D;
+
+  /* dark canvas panels — dark in BOTH themes (hero, principles, trust, footer) */
+  --canvas:#06201C;
+  --canvas-text:#E7F0ED;
+  --canvas-muted:#9FB7B1;
+  --canvas-line:rgba(255,255,255,.13);
+
+  /* platform tints — theme agnostic */
+  --tint-dir:rgba(27,107,92,.10);
+  --tint-ops:rgba(211,162,74,.13);
+
+  /* type */
+  --display:"Newsreader",Georgia,serif;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --ethiopic:"Noto Serif Ethiopic","Newsreader",serif;
+
+  /* layout */
+  --max:1200px;
+  --gut:20px;
+  --pad:72px;
+  --nav-h:66px;
+  --r-sm:10px; --r-md:16px; --r-lg:22px;
+  --ease:cubic-bezier(.22,.68,.28,1);
+}
+
+[data-theme="dark"]{
+  --bg:#071A18;
+  --bg-alt:#0B2320;
+  --surface:#0E2B27;
+  --text:#E9F2EF;
+  --muted:#A2B9B4;
+  --line:rgba(255,255,255,.12);
+  --accent:#6FCFB4;
+  --btn-bg:#6FCFB4;
+  --btn-fg:#052019;
+  --nav-bg:rgba(7,26,24,.86);
+  --shadow:rgba(0,0,0,.6);
+  --cta-bg:#0C3A32;
+  --canvas:#04120F;
+  --canvas-line:rgba(255,255,255,.11);
+  --tint-dir:rgba(111,207,180,.07);
+  --tint-ops:rgba(211,162,74,.08);
+}
+
+/* ============================================================
+   base — mobile first
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:16px;line-height:1.62;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .5s var(--ease),color .5s var(--ease);
+  padding-bottom:76px; /* room for the mobile action bar */
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+::selection{background:var(--gold);color:#06201C}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:80;background:var(--gold);color:#06201C;padding:12px 18px;border-radius:0 0 10px 0;font-weight:600;font-size:14px}
+.skip:focus{left:0}
+
+.wrap{width:min(100% - (var(--gut) * 2),var(--max));max-width:100%;margin-inline:auto}
+h1,h2,h3,h4,p,li{overflow-wrap:break-word}
+.sec{padding:var(--pad) 0;position:relative}
+section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
+.sec--alt{background:var(--bg-alt);transition:background .5s var(--ease)}
+.sec--canvas{background:var(--canvas);color:var(--canvas-text)}
+
+/* ---- type roles ---- */
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.17em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:9px;
+}
+.eyebrow::before{content:"";width:16px;height:1px;background:currentColor;opacity:.55}
+.sec--canvas .eyebrow,.hero .eyebrow{color:var(--gold)}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.25rem,8.6vw,4.6rem);line-height:1.05;letter-spacing:-.03em;font-weight:300}
+h2{font-size:clamp(1.78rem,5.4vw,3.1rem);line-height:1.12;letter-spacing:-.025em;font-weight:300}
+h3{font-size:clamp(1.2rem,3.6vw,1.55rem);line-height:1.24}
+p{margin:0}
+.lede{font-size:1.02rem;color:var(--muted);line-height:1.6;max-width:62ch}
+.sec--canvas .lede{color:var(--canvas-muted)}
+.head{max-width:740px;margin-bottom:38px}
+.head h2{margin:14px 0 16px}
+.sec--canvas h2{color:#fff}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:48px;padding:12px 22px;border-radius:999px;
+  font-size:14.5px;font-weight:600;letter-spacing:-.01em;
+  border:1px solid transparent;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease),transform .35s var(--ease);
+}
+.btn svg{transition:transform .35s var(--ease);flex:none}
+.btn:hover svg{transform:translateX(4px)}
+.btn--solid{background:var(--btn-bg);color:var(--btn-fg)}
+.btn--solid:hover{box-shadow:0 12px 28px -14px var(--shadow);transform:translateY(-1px)}
+.btn--gold{background:var(--gold);color:#06201C}
+.btn--gold:hover{background:var(--gold-soft);transform:translateY(-1px)}
+.btn--line{border-color:var(--line);background:var(--surface);color:var(--text)}
+.btn--line:hover{border-color:var(--accent)}
+.btn--ghost{border-color:var(--canvas-line);color:var(--canvas-text)}
+.btn--ghost:hover{border-color:var(--mint);background:rgba(111,207,180,.12)}
+
+.tlink{
+  display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;
+  color:var(--accent);padding-bottom:3px;border-bottom:1px solid currentColor;
+  transition:gap .3s var(--ease),opacity .3s;
+  min-height:32px;
+}
+.tlink:hover{gap:13px;opacity:.78}
+
+/* ============================================================
+   navigation
+   ============================================================ */
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:60;transition:width .1s linear}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  border-bottom:1px solid transparent;
+  transition:background .45s var(--ease),border-color .45s var(--ease);
+}
+.nav.solid{background:var(--nav-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom-color:var(--line)}
+.nav__in{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+/* --- the ጥሩ lockup --- */
+.brand{display:inline-flex;align-items:center;gap:10px}
+.brand__mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:5px 10px 7px;border-radius:11px;background:var(--gold);color:#06201C;
+  font-family:var(--ethiopic);font-size:16px;line-height:1;letter-spacing:.01em;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.brand:hover .brand__mark{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--gold)}
+.brand__name{font-family:var(--display);font-size:18px;letter-spacing:-.02em;color:#fff;transition:color .45s var(--ease);white-space:nowrap}
+.brand__name b{font-weight:500}
+.brand__name i{font-style:normal;opacity:.62;font-weight:300}
+.nav.solid .brand__name{color:var(--text)}
+
+.nav__links{display:none}
+.nav__right{display:flex;align-items:center;gap:8px}
+.nav__cta{display:none}
+.iconbtn{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.22);color:#fff;
+  transition:border-color .4s var(--ease),background .4s var(--ease),color .4s var(--ease);
+}
+.iconbtn:hover{background:rgba(255,255,255,.1)}
+.nav.solid .iconbtn{border-color:var(--line);color:var(--text)}
+.nav.solid .iconbtn:hover{background:var(--bg-alt)}
+.iconbtn svg{width:19px;height:19px}
+[data-theme="light"] .ico-moon{display:block}
+[data-theme="light"] .ico-sun{display:none}
+[data-theme="dark"] .ico-moon{display:none}
+[data-theme="dark"] .ico-sun{display:block}
+
+.burger i{display:block;width:17px;height:1.5px;background:currentColor;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:17px;height:1.5px;background:currentColor;transition:transform .35s var(--ease)}
+.burger i::before{top:-5.5px}.burger i::after{top:5.5px}
+.burger.on i{background:transparent}
+.burger.on i::before{transform:translateY(5.5px) rotate(45deg)}
+.burger.on i::after{transform:translateY(-5.5px) rotate(-45deg)}
+.nav .burger.on{color:var(--text);border-color:var(--line);background:var(--bg)}
+
+.drawer{
+  position:fixed;top:var(--nav-h);left:0;right:0;z-index:49;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:10px var(--gut) 24px;
+  transform:translateY(-10px);opacity:0;pointer-events:none;
+  transition:transform .35s var(--ease),opacity .35s var(--ease);
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;
+}
+.drawer.on{transform:none;opacity:1;pointer-events:auto}
+.drawer a.dl{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:17px;min-height:52px}
+.drawer a.dl span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.drawer .btn{margin-top:18px;width:100%}
+
+/* ============================================================
+   hero
+   ============================================================ */
+.hero{
+  position:relative;background:var(--canvas);color:var(--canvas-text);
+  padding:calc(var(--nav-h) + 44px) 0 52px;overflow:hidden;
+}
+.hero__glow{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(80% 46% at 82% 4%,rgba(27,107,92,.44),transparent 62%),
+    radial-gradient(60% 34% at 4% 96%,rgba(211,162,74,.15),transparent 66%);
+}
+.hero__grid{position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(78% 58% at 60% 34%,#000,transparent 76%);
+  mask-image:radial-gradient(78% 58% at 60% 34%,#000,transparent 76%);
+}
+.hero__in{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:32px}
+.hero__in > *{min-width:0}
+.hero h1{color:#fff;margin:18px 0 18px}
+.hero h1 .accent{font-style:italic;color:var(--mint)}
+.hero .lede{max-width:52ch;color:#CFDFDB}
+
+/* audience switcher — signature interaction */
+.aud{margin-top:28px}
+.aud__label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--canvas-muted);margin-bottom:11px}
+.aud__tabs{display:flex;width:100%;min-width:0;max-width:100%;gap:6px;padding:5px;border:1px solid var(--canvas-line);border-radius:16px;background:rgba(255,255,255,.045);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.aud__tabs::-webkit-scrollbar{display:none}
+.aud__tab{
+  padding:10px 15px;border-radius:12px;font-size:13.5px;font-weight:600;
+  color:var(--canvas-muted);white-space:nowrap;min-height:42px;
+  transition:color .3s var(--ease),background .3s var(--ease);
+}
+.aud__tab.on{background:var(--mint);color:#06201C}
+.aud__panel{margin-top:20px}
+.aud__pane{display:none}
+.aud__pane.on{display:block;animation:fadeUp .5s var(--ease) both}
+.aud__pane p{color:#DDEAE6;font-size:1rem;max-width:50ch;line-height:1.6}
+.aud__pane .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.aud__pane .row .btn{flex:1 1 100%;min-width:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* ጥሩ definition card — brand thesis */
+.def{
+  border:1px solid var(--canvas-line);border-radius:var(--r-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.015));
+  padding:26px;position:relative;overflow:hidden;
+}
+.def__stamp{
+  position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--canvas-muted);
+  border:1px solid var(--canvas-line);border-radius:999px;padding:5px 10px;
+}
+.def__word{font-family:var(--ethiopic);font-size:clamp(64px,17vw,124px);line-height:1;color:#fff;margin-bottom:8px}
+.def__word span{color:var(--gold)}
+.def__pron{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--mint)}
+.def__rule{height:1px;background:var(--canvas-line);margin:16px 0}
+.def__gloss{font-family:var(--display);font-size:1.2rem;font-style:italic;color:#fff;font-weight:300}
+.def__note{margin-top:11px;font-size:14px;color:var(--canvas-muted);line-height:1.55}
+
+/* trust strip */
+.strip{border-top:1px solid var(--canvas-line);margin-top:44px;padding-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}
+.strip__item .n{font-family:var(--display);font-size:1.85rem;color:#fff;font-weight:300;letter-spacing:-.02em;line-height:1.1}
+.strip__item .n span{color:var(--gold)}
+.strip__item .l{font-size:13px;color:var(--canvas-muted);margin-top:4px;line-height:1.45}
+
+/* ============================================================
+   barriers
+   ============================================================ */
+.barriers{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.barrier{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:26px;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s,background .5s var(--ease);
+}
+.barrier::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .55s var(--ease)}
+.barrier:hover{transform:translateY(-4px);box-shadow:0 22px 46px -32px var(--shadow)}
+.barrier:hover::before{transform:scaleY(1)}
+.barrier__ico{width:36px;height:36px;color:var(--accent);margin-bottom:16px}
+.barrier h3{margin-bottom:9px}
+.barrier p{color:var(--muted);font-size:15.2px}
+.barrier__tag{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+
+/* ============================================================
+   platforms
+   ============================================================ */
+.plats{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.plat{
+  border-radius:var(--r-lg);border:1px solid var(--line);background:var(--surface);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),background .5s var(--ease);
+}
+.plat:hover{transform:translateY(-5px);box-shadow:0 30px 58px -40px var(--shadow)}
+.plat__body{padding:26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.plat__tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:9px}
+.plat__tag i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.plat--dir .plat__tag{color:var(--accent)}
+.plat--ops .plat__tag{color:var(--gold)}
+.plat h3{font-size:clamp(1.45rem,4.6vw,2rem);letter-spacing:-.025em}
+.plat p{color:var(--muted);font-size:15.4px}
+.plat__list{list-style:none;padding:0;margin:2px 0 0;display:grid;gap:9px}
+.plat__list li{display:flex;gap:10px;font-size:14.4px;color:var(--muted);align-items:flex-start}
+.plat__list svg{flex:none;width:16px;height:16px;margin-top:4px;color:var(--accent)}
+.plat--ops .plat__list svg{color:var(--gold)}
+.plat__foot{margin-top:auto;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.plat__price{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted)}
+.deck{
+  display:flex;align-items:center;gap:13px;margin-top:4px;padding:14px 16px;
+  border:1px solid var(--line);border-radius:14px;background:var(--bg-alt);
+  transition:border-color .4s var(--ease),background .4s var(--ease),transform .4s var(--ease);
+}
+.deck:hover{border-color:var(--gold);transform:translateY(-2px)}
+.deck:hover .deck__go{transform:translateX(4px)}
+.deck__ico{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;background:rgba(211,162,74,.16);color:var(--gold)}
+.deck__txt{flex:1;min-width:0;display:block}
+.deck__txt b{display:block;font-size:14.2px;font-weight:600;letter-spacing:-.01em}
+.deck__txt span{display:block;font-size:12.6px;color:var(--muted)}
+.deck__go{flex:none;color:var(--muted);transition:transform .4s var(--ease)}
+
+/* ---- team ---- */
+.team{margin-top:clamp(56px,7vw,86px);padding-top:clamp(46px,5vw,64px);border-top:1px solid var(--line)}
+.teamgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.member{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:start;
+  transition:border-color .45s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease),background .5s var(--ease);
+}
+.member:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 22px 46px -34px var(--shadow)}
+.member__ph{
+  width:100%;max-width:190px;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;
+  border-radius:14px;border:1px solid var(--line);background:var(--bg-alt);
+}
+.member__ph--initials{
+  display:grid;place-items:center;max-width:120px;aspect-ratio:1;
+  background:var(--forest);color:var(--gold);font-family:var(--display);font-size:30px;letter-spacing:-.02em;
+}
+.member__role{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:9px}
+.member h3{font-size:1.3rem;margin-bottom:9px}
+.member p{font-size:14.6px;color:var(--muted)}
+.member__links{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
+
+/* product previews */
+.mock{padding:22px 22px 0;border-bottom:1px solid var(--line);position:relative}
+.mock::before{content:"";position:absolute;inset:0;background:linear-gradient(170deg,var(--tint-dir),transparent 72%);pointer-events:none}
+.plat--ops .mock::before{background:linear-gradient(170deg,var(--tint-ops),transparent 72%)}
+.mock__win{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px 14px 0 0;padding:14px;
+  box-shadow:0 20px 40px -30px var(--shadow);
+  transition:transform .6s var(--ease);
+}
+.plat:hover .mock__win{transform:translateY(-5px)}
+.mock__bar{margin-bottom:12px}
+.mock__search{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:12.5px;color:var(--muted);background:var(--bg-alt)}
+.mock__live{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12.5px;color:var(--muted);background:var(--bg-alt)}
+.mock__live .dotlive{width:7px;height:7px;border-radius:50%;background:var(--spruce);display:inline-block;margin-right:8px;box-shadow:0 0 0 0 rgba(27,107,92,.55);animation:ping 2.4s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(27,107,92,.5)}70%{box-shadow:0 0 0 7px rgba(27,107,92,0)}100%{box-shadow:0 0 0 0 rgba(27,107,92,0)}}
+.mock__row{display:flex;align-items:center;gap:11px;padding:10px 2px;border-top:1px solid var(--line)}
+.mock__row:first-of-type{border-top:0}
+.mock__av{width:32px;height:32px;border-radius:9px;background:var(--bg-alt);display:grid;place-items:center;font-size:11px;font-weight:600;color:var(--accent);flex:none;font-family:var(--mono)}
+.plat--ops .mock__av{color:var(--gold)}
+.mock__meta{flex:1;min-width:0}
+.mock__meta b{display:block;font-size:13px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock__meta span{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.pill{font-size:10px;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 8px;border-radius:999px;white-space:nowrap;flex:none}
+.pill--official{background:rgba(27,107,92,.14);color:var(--accent)}
+.pill--community{background:var(--bg-alt);color:var(--muted)}
+.pill--kiosk{background:rgba(211,162,74,.16);color:var(--gold)}
+.mock__meter{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.mock__meter .top{display:flex;justify-content:space-between;font-size:11px;font-family:var(--mono);color:var(--muted);margin-bottom:7px}
+.mock__meter .track{height:6px;border-radius:99px;background:var(--bg-alt);overflow:hidden}
+.mock__meter .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--spruce),var(--mint));transition:width 1.6s var(--ease)}
+.in .mock__meter .fill{width:94%}
+
+/* ============================================================
+   capability tabs
+   ============================================================ */
+.tabs{display:flex;gap:6px;margin-bottom:26px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:13px 16px;font-size:14.5px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .35s var(--ease),border-color .35s var(--ease);min-height:46px}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.tabpane{display:none}
+.tabpane.on{display:block;animation:fadeUp .5s var(--ease) both}
+.feats{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.feat{padding:22px;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line);transition:border-color .4s,transform .4s var(--ease),background .5s var(--ease)}
+.feat:hover{border-color:var(--accent);transform:translateY(-3px)}
+.feat h4{font-family:var(--sans);font-weight:600;font-size:15.4px;letter-spacing:-.01em;margin-bottom:7px}
+.feat p{font-size:14.2px;color:var(--muted)}
+.feat__k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
+
+/* ============================================================
+   principles
+   ============================================================ */
+.prin{display:grid;border-top:1px solid var(--canvas-line)}
+.prin__i{padding:24px 0 20px;border-bottom:1px solid var(--canvas-line);position:relative;transition:background .45s var(--ease)}
+.prin__i .k{font-family:var(--mono);font-size:10.5px;color:var(--gold);letter-spacing:.14em}
+.prin__i h3{font-size:1.18rem;margin:11px 0 8px;color:#fff}
+.prin__i p{font-size:14.2px;color:var(--canvas-muted);line-height:1.55}
+
+/* ============================================================
+   story
+   ============================================================ */
+.story{display:grid;grid-template-columns:minmax(0,1fr);gap:42px}
+.story > *{min-width:0}
+.quote{
+  font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:clamp(1.3rem,4.6vw,1.9rem);line-height:1.34;letter-spacing:-.02em;color:var(--text);
+  border-left:2px solid var(--gold);padding-left:20px;margin:0;
+}
+.quote cite{display:block;margin-top:18px;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+
+.time{display:grid}
+.time__i{display:grid;gap:5px;padding:20px 0;border-top:1px solid var(--line)}
+.time__i:last-child{border-bottom:1px solid var(--line)}
+.time__y{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.08em}
+.time__i:last-child .time__y{color:var(--gold)}
+.time__c b{display:block;font-family:var(--display);font-size:1.14rem;font-weight:400;margin-bottom:5px}
+.time__c p{font-size:14.4px;color:var(--muted)}
+
+/* ============================================================
+   promises + reach
+   ============================================================ */
+.prom{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+.prom > *{min-width:0}
+.promlist{display:grid;margin-top:8px}
+.promlist__i{padding:20px 0;border-bottom:1px solid var(--canvas-line);display:flex;gap:18px;align-items:baseline}
+.promlist__i:first-child{border-top:1px solid var(--canvas-line)}
+.promlist__i .k{font-family:var(--mono);font-size:10.5px;color:var(--gold);letter-spacing:.13em;flex:none;width:46px}
+.promlist__i b{font-family:var(--display);font-weight:400;font-size:1.26rem;color:#fff;display:block;margin-bottom:4px}
+.promlist__i p{font-size:14.4px;color:var(--canvas-muted)}
+
+.reach{border:1px solid var(--canvas-line);border-radius:var(--r-lg);padding:26px;background:linear-gradient(155deg,rgba(27,107,92,.24),rgba(255,255,255,.02))}
+.reach__title{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mint);margin-bottom:22px}
+.reach__s{display:flex;align-items:flex-start;gap:15px;padding:13px 0;position:relative}
+.reach__s .dot{width:11px;height:11px;border-radius:50%;border:2px solid var(--mint);flex:none;background:var(--canvas);margin-top:5px}
+.reach__s:not(:last-child)::after{content:"";position:absolute;left:5px;top:30px;bottom:-2px;width:1px;background:linear-gradient(var(--mint),rgba(111,207,180,.15))}
+.reach__s.now .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(211,162,74,.16)}
+.reach__s b{font-family:var(--display);font-size:1.1rem;font-weight:400;color:#fff;display:block}
+.reach__s span{font-size:13.2px;color:var(--canvas-muted)}
+.reach__s.soon b{color:var(--canvas-muted)}
+.reach__note{margin-top:20px;font-size:13.6px;color:var(--canvas-muted);border-top:1px solid var(--canvas-line);padding-top:16px}
+
+/* ============================================================
+   partners
+   ============================================================ */
+.partners{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.partner{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:24px;display:flex;flex-direction:column;gap:10px;transition:border-color .45s,transform .45s var(--ease),box-shadow .45s var(--ease),background .5s var(--ease)}
+.partner:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 20px 40px -32px var(--shadow)}
+.partner h4{font-family:var(--display);font-weight:400;font-size:1.16rem}
+.partner p{font-size:14.2px;color:var(--muted)}
+.partner .tlink{margin-top:auto;padding-top:10px;font-size:13.4px;align-self:flex-start}
+
+/* ============================================================
+   CTA + footer
+   ============================================================ */
+.cta{background:var(--cta-bg);color:#fff;position:relative;overflow:hidden;transition:background .5s var(--ease)}
+.cta::before{content:"ጥሩ";position:absolute;right:-4%;top:50%;transform:translateY(-50%);font-family:var(--ethiopic);font-size:clamp(180px,42vw,400px);color:rgba(255,255,255,.05);line-height:.8;pointer-events:none}
+.cta__in{position:relative;max-width:760px}
+.cta h2{color:#fff;margin-bottom:16px}
+.cta p{color:rgba(255,255,255,.82);font-size:1.02rem;max-width:56ch}
+.cta__row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.cta__row .btn{flex:1 1 auto;min-width:180px}
+.cta__mail{display:flex;flex-direction:column;gap:12px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2);font-size:14px}
+.cta__mail a,.cta__mail span{color:rgba(255,255,255,.86);display:inline-flex;gap:9px;align-items:center;min-height:32px}
+.cta__mail a:hover{color:var(--gold)}
+
+footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
+.foot{display:grid;grid-template-columns:minmax(0,1fr);gap:32px}
+.foot__b .brand__name{color:#fff}
+.foot__b p{margin-top:14px;font-size:14.2px;max-width:36ch;line-height:1.6}
+.foot h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;font-weight:500}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.foot a{font-size:14.2px;transition:color .3s;display:inline-block;min-height:26px}
+.foot a:hover{color:#fff}
+.foot__legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--canvas-line);display:flex;flex-direction:column;gap:10px;font-size:12.4px;color:#6E8983}
+
+/* ============================================================
+   mobile action bar
+   ============================================================ */
+.mbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:45;
+  display:flex;gap:8px;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));
+  background:var(--nav-bg);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);
+  border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .45s var(--ease);
+}
+.mbar.on{transform:none}
+.mbar .btn{flex:1;min-height:46px;font-size:14px;padding:10px 12px}
+
+/* ============================================================
+   reveal
+   ============================================================ */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ============================================================
+   ≥ 640px
+   ============================================================ */
+@media(min-width:440px){
+  .aud__pane .row .btn{flex:1 1 auto;min-width:158px}
+}
+
+@media(min-width:640px){
+  :root{--gut:28px;--pad:88px;--nav-h:72px}
+  body{font-size:16.5px;padding-bottom:0}
+  .lede{font-size:1.08rem}
+  .head{margin-bottom:44px}
+  .barriers,.feats,.partners{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .strip__item .n{font-size:2rem}
+  .def{padding:32px}
+  .plat__body,.mock{padding-left:30px;padding-right:30px}
+  .mock{padding-top:26px}
+  .plat__body{padding-top:30px;padding-bottom:30px}
+  .time__i{grid-template-columns:104px minmax(0,1fr);gap:22px;align-items:start}
+  .member{grid-template-columns:150px minmax(0,1fr);gap:22px;padding:24px}
+  .member__ph{max-width:150px}
+  .member__ph--initials{max-width:150px;aspect-ratio:4/5}
+  .quote{padding-left:26px}
+  .cta__mail{flex-direction:row;gap:26px;flex-wrap:wrap}
+  .foot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot__legal{flex-direction:row;justify-content:space-between}
+  .mbar{display:none}
+}
+
+/* ============================================================
+   ≥ 900px
+   ============================================================ */
+@media(min-width:900px){
+  :root{--gut:36px;--pad:104px;--nav-h:78px}
+  .nav__links{display:flex;align-items:center;gap:28px}
+  .nav__links a{font-size:14.5px;font-weight:500;color:rgba(255,255,255,.78);transition:color .3s;position:relative}
+  .nav__links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:currentColor;transition:width .3s var(--ease)}
+  .nav__links a:hover{color:#fff}
+  .nav__links a:hover::after{width:100%}
+  .nav.solid .nav__links a{color:var(--muted)}
+  .nav.solid .nav__links a:hover{color:var(--text)}
+  .nav__cta{display:inline-flex;align-items:center;min-height:42px;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;transition:all .35s var(--ease)}
+  .nav__cta:hover{background:var(--gold);border-color:var(--gold);color:#06201C}
+  .nav.solid .nav__cta{background:var(--btn-bg);border-color:var(--btn-bg);color:var(--btn-fg)}
+  .burger{display:none}
+  .brand__name{font-size:20px}
+  .brand__mark{font-size:17px}
+
+  .hero{padding:calc(var(--nav-h) + 76px) 0 84px}
+  .hero__in{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+  .strip{margin-top:64px}
+  .strip__item .n{font-size:2.3rem}
+  .def__word{font-size:clamp(96px,9vw,124px)}
+  .def__gloss{font-size:1.32rem}
+
+  .barriers,.feats{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .plats{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .partners{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .story,.prom{grid-template-columns:repeat(2,minmax(0,1fr));gap:60px;align-items:center}
+  .prom{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)}
+  .reach{padding:34px}
+
+  .prin{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .prin__i{padding:28px 20px 22px;border-bottom:0;border-right:1px solid var(--canvas-line)}
+  .prin__i:last-child{border-right:0}
+  .prin__i:hover{background:rgba(255,255,255,.035)}
+  .prin__i::before{content:"";position:absolute;top:-1px;left:0;width:0;height:2px;background:var(--gold);transition:width .6s var(--ease)}
+  .prin__i:hover::before{width:100%}
+
+  .foot{grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:40px}
+  .teamgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .aud__pane .row .btn{flex:0 1 auto}
+  .prin__i{min-width:0}
+  .cta__row .btn{flex:0 1 auto}
+}
+
+@media(min-width:1120px){
+  :root{--gut:48px;--pad:124px}
+  h1{font-size:4.05rem}
+  .hero h1{max-width:17ch}
+  .plat__body{padding:38px}
+  .mock{padding:30px 34px 0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .rv{opacity:1;transform:none}
+  .mbar{transform:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress"></div>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="Tiru Health home">
+      <span class="brand__mark" aria-hidden="true" lang="am">ጥሩ</span>
+      <span class="brand__name"><b>Tiru</b> <i>Health</i></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#platforms">Platforms</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#story">Our story</a>
+      <a href="#trust">Trust</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="iconbtn" id="themeBtn" aria-label="Switch to dark mode" title="Switch theme">
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>
+      </button>
+      <a class="nav__cta" href="#partner">Partner with us</a>
+      <button class="iconbtn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a class="dl" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Find care <span>Directory</span></a>
+  <a class="dl" href="#platforms">Platforms</a>
+  <a class="dl" href="#capabilities">Capabilities</a>
+  <a class="dl" href="#story">Our story</a>
+  <a class="dl" href="#trust">Trust</a>
+  <a class="dl" href="#partner">Partnerships</a>
+  <a class="btn btn--solid" href="#partner">Partner with us</a>
+</div>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+
+    <div>
+      <span class="eyebrow rv">Addis Ababa · Ethiopia</span>
+      <h1 class="rv rv-d1">Building a trusted digital infrastructure for <span class="accent">healthcare.</span></h1>
+      <p class="lede rv rv-d2">Working to make quality healthcare easier to find, easier to deliver and easier to improve — one real problem at a time.</p>
+
+      <div class="aud rv rv-d3">
+        <div class="aud__label">Tell us who you are</div>
+        <div class="aud__tabs" role="tablist" aria-label="Choose your audience">
+          <button class="aud__tab on" role="tab" aria-selected="true" aria-controls="aud-pat" id="tab-pat" data-aud="pat">Looking for care</button>
+          <button class="aud__tab" role="tab" aria-selected="false" aria-controls="aud-fac" id="tab-fac" data-aud="fac">Hospital or clinic</button>
+          <button class="aud__tab" role="tab" aria-selected="false" aria-controls="aud-inv" id="tab-inv" data-aud="inv">Partner or investor</button>
+        </div>
+
+        <div class="aud__panel">
+          <div class="aud__pane on" id="aud-pat" role="tabpanel" aria-labelledby="tab-pat" data-pane="pat" tabindex="0">
+            <p>Find a clinic, pharmacy, laboratory or specialist across Addis Ababa — with services, opening hours, payment options and location kept current by the providers themselves. Free, and always will be.</p>
+            <div class="row">
+              <a class="btn btn--gold" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Find care near you <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--ghost" href="#platforms">How it works</a>
+            </div>
+          </div>
+          <div class="aud__pane" id="aud-fac" role="tabpanel" aria-labelledby="tab-fac" data-pane="fac" tabindex="0">
+            <p>See who is on duty right now, verify presence on site rather than at the gate, reach every member of staff instantly, and hold audit-ready records of the hours your facility is required to prove.</p>
+            <div class="row">
+              <a class="btn btn--gold" href="#platforms">Explore Tiru Ops <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--ghost" href="#partner">Book a walkthrough</a>
+            </div>
+          </div>
+          <div class="aud__pane" id="aud-inv" role="tabpanel" aria-labelledby="tab-inv" data-pane="inv" tabindex="0">
+            <p>Two live platforms, built by a practising physician and validated inside real facilities before anything was sold. We earn trust before we seek scale — and we look for partners who work the same way.</p>
+            <div class="row">
+              <a class="btn btn--gold" href="#partner">Start a conversation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--ghost" href="#story">Read our story</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="def rv rv-d2" aria-label="Meaning of the name Tiru">
+      <span class="def__stamp">The name</span>
+      <div class="def__word" lang="am">ጥ<span>ሩ</span></div>
+      <div class="def__pron">ṭi·ru · adjective · Amharic</div>
+      <div class="def__rule"></div>
+      <div class="def__gloss">“good — of quality.”</div>
+      <p class="def__note">One word carrying the standard we build towards: healthcare people can trust, information people can rely on, systems that hold up when it matters.</p>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <div class="strip rv rv-d3">
+      <div class="strip__item"><div class="n" data-count="105">0</div><div class="l">Private health facilities mapped across Addis Ababa</div></div>
+      <div class="strip__item"><div class="n"><span>2</span></div><div class="l">Live platforms, in daily use and continuously improved</div></div>
+      <div class="strip__item"><div class="n" data-count="5" data-suffix="+">0</div><div class="l">Years of clinical practice behind every product decision</div></div>
+      <div class="strip__item"><div class="n">Free</div><div class="l">Public access to healthcare discovery — permanently</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BARRIERS ============================ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Why Tiru exists</span>
+      <h2>Healthcare rarely fails for lack of expertise. It fails in the gaps between people, information and systems.</h2>
+      <p class="lede">Years of clinical practice surfaced the same three barriers again and again. Tiru was built to remove them.</p>
+    </div>
+
+    <div class="barriers">
+      <article class="barrier rv">
+        <svg class="barrier__ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="13"/><path d="M30.5 30.5 41 41"/><path d="M21 15v6M21 26.5h.02"/></svg>
+        <h3>Information barriers</h3>
+        <p>Nobody should have to phone six people to learn which clinic is open, what it costs, or whether the service they need is offered there at all.</p>
+        <div class="barrier__tag">Answered by the Directory</div>
+      </article>
+
+      <article class="barrier rv rv-d1">
+        <svg class="barrier__ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6 40 12v13c0 10-7 15.5-16 18-9-2.5-16-8-16-18V12Z"/><path d="m17.5 23.5 4.5 4.5 9-9"/></svg>
+        <h3>Trust barriers</h3>
+        <p>A healthcare decision deserves verified information — licensed facilities, confirmed by the providers themselves and checked before it is published.</p>
+        <div class="barrier__tag">Answered by verification</div>
+      </article>
+
+      <article class="barrier rv rv-d2">
+        <svg class="barrier__ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 39h34"/><path d="M12 39V27M22 39V17M32 39V23M42 39V11"/><circle cx="12" cy="23" r="2.4"/><circle cx="22" cy="13" r="2.4"/></svg>
+        <h3>Accountability barriers</h3>
+        <p>Facilities are asked to prove coverage, staffing and compliance — often with paper registers that were never designed to answer the question.</p>
+        <div class="barrier__tag">Answered by Tiru Ops</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PLATFORMS ============================ -->
+<section class="sec sec--alt" id="platforms">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Our platforms</span>
+      <h2>Two platforms. One direction.</h2>
+      <p class="lede">One helps people find the right care. The other helps facilities deliver it well. Together they strengthen both sides of the same healthcare journey.</p>
+    </div>
+
+    <div class="plats">
+
+      <article class="plat plat--dir rv">
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win">
+            <div class="mock__bar">
+              <div class="mock__search">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4.5 4.5"/></svg>
+                Pediatric clinic near Bole
+              </div>
+            </div>
+            <div class="mock__row">
+              <div class="mock__av">PC</div>
+              <div class="mock__meta"><b>Bole Family &amp; Pediatric Clinic</b><span>Bole · 1.2 km · open until 20:00</span></div>
+              <span class="pill pill--official">Official</span>
+            </div>
+            <div class="mock__row">
+              <div class="mock__av">KD</div>
+              <div class="mock__meta"><b>Kazanchis Diagnostic Laboratory</b><span>Kirkos · 3.4 km · open 24 hrs</span></div>
+              <span class="pill pill--community">Community</span>
+            </div>
+            <div class="mock__row">
+              <div class="mock__av">DA</div>
+              <div class="mock__meta"><b>Dr. Aster H. — Pediatrics</b><span>2 facilities · by appointment</span></div>
+              <span class="pill pill--official">Verified</span>
+            </div>
+          </div>
+        </div>
+        <div class="plat__body">
+          <div class="plat__tag"><i></i> Care navigation · free &amp; public</div>
+          <h3>Tiru Medical Directory</h3>
+          <p>An open map of private healthcare in Addis Ababa — hospitals, clinics, pharmacies, laboratories, imaging centres, home care and ambulance services, with the specialists who practise in them.</p>
+          <ul class="plat__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> 105+ private health facilities mapped, with results sorted by distance from you</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Providers claim their listing and keep it accurate themselves</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Operating and business licences checked before a listing turns Official</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Anyone can flag an error — corrections are reviewed, not ignored</li>
+          </ul>
+          <div class="plat__foot">
+            <a class="tlink" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Open the Directory
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+            <span class="plat__price">Free for the public — always</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="plat plat--ops rv rv-d1">
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win">
+            <div class="mock__bar">
+              <div class="mock__live">
+                <span><span class="dotlive"></span>On duty now</span>
+                <span style="font-family:var(--mono)">42 staff</span>
+              </div>
+            </div>
+            <div class="mock__row">
+              <div class="mock__av">AT</div>
+              <div class="mock__meta"><b>Emergency — night shift</b><span>checked in 21:04 · inside geofence</span></div>
+              <span class="pill pill--official">On site</span>
+            </div>
+            <div class="mock__row">
+              <div class="mock__av">MG</div>
+              <div class="mock__meta"><b>Housekeeping — floor 2</b><span>kiosk check-in · no phone needed</span></div>
+              <span class="pill pill--kiosk">Kiosk</span>
+            </div>
+            <div class="mock__meter">
+              <div class="top"><span>Verified presence this week</span><span>45 / 48 hrs</span></div>
+              <div class="track"><div class="fill"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="plat__body">
+          <div class="plat__tag"><i></i> Operations intelligence · for facilities</div>
+          <h3>Tiru Ops</h3>
+          <p>A fingerprint scanner tells you when someone arrived and left. Tiru Ops tells you where they were throughout the day — and turns that into records a facility can stand behind.</p>
+          <ul class="plat__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> GPS-geofenced presence verification — no hardware to buy, install or maintain</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Real-time visibility from anywhere: a live shift board across every department</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Multiple centres under one control panel, from a single login</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Daily, weekly and monthly attendance flagging, exportable for payroll and audit</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Digital leave requests routed to leadership for approval</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Incident reporting with a documented, reviewable trail</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> One message from leadership to every member of staff, instantly</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> Kiosk check-in so cleaning and security teams are never left out</li>
+          </ul>
+          <div class="plat__foot">
+            <a class="tlink" href="#partner">Book a walkthrough
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+            <span class="plat__price">Three-month pilot at no cost</span>
+          </div>
+          <!-- PITCH DECK: drop the PDF in the repo root as tiru-ops-pitch-deck.pdf,
+               or replace the href below with a Drive / Canva share link. -->
+          <a class="deck" href="tiru-ops-pitch-deck.pdf" target="_blank" rel="noopener">
+            <span class="deck__ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M12 11v6m-2.5-2.5L12 17l2.5-2.5"/></svg>
+            </span>
+            <span class="deck__txt"><b>Tiru Ops pitch deck</b><span>The full product and market case — PDF</span></span>
+            <svg class="deck__go" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CAPABILITIES ============================ -->
+<section class="sec" id="capabilities">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Inside the platforms</span>
+      <h2>What each one actually does.</h2>
+      <p class="lede">Every capability below started as a problem someone described on a ward, at a reception desk, or on a phone call that should never have been necessary.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Platform capabilities">
+      <button class="tab on" role="tab" aria-selected="true" id="t-dir" aria-controls="p-dir" data-tab="dir">Tiru Medical Directory</button>
+      <button class="tab" role="tab" aria-selected="false" id="t-ops" aria-controls="p-ops" data-tab="ops">Tiru Ops</button>
+    </div>
+
+    <div class="tabpane on" id="p-dir" role="tabpanel" aria-labelledby="t-dir" data-tabpane="dir" tabindex="0">
+      <div class="feats">
+        <div class="feat"><span class="feat__k">Discovery</span><h4>Search that understands care</h4><p>Search by service, facility type, specialist or location — and see what is nearest to you first, sorted by real distance.</p></div>
+        <div class="feat"><span class="feat__k">Detail</span><h4>What you need before you travel</h4><p>Services, hours, payment methods, walk-in or appointment policy, contact numbers and check-up packages, on one page.</p></div>
+        <div class="feat"><span class="feat__k">Verification</span><h4>Licence-gated approval</h4><p>Operating and business licences, with issue and expiry dates, are required before a facility can carry the Official badge.</p></div>
+        <div class="feat"><span class="feat__k">Ownership</span><h4>Provider console</h4><p>Facilities claim their listing and edit it live — services, specialists, photographs and hours stay current because the provider keeps them current.</p></div>
+        <div class="feat"><span class="feat__k">Specialists</span><h4>Find a named doctor</h4><p>Search specialists directly and see where they practise, what they treat and whether an appointment is required.</p></div>
+        <div class="feat"><span class="feat__k">Correction</span><h4>Report what is wrong</h4><p>Anyone can submit a correction. Each one is reviewed by a person before it changes what the public sees.</p></div>
+      </div>
+    </div>
+
+    <div class="tabpane" id="p-ops" role="tabpanel" aria-labelledby="t-ops" data-tabpane="ops" tabindex="0">
+      <div class="feats">
+        <div class="feat"><span class="feat__k">Presence</span><h4>Verified check-in</h4><p>Staff check in inside a geofence drawn around the facility, with QR and kiosk fallbacks. Records hold even when the network does not.</p></div>
+        <div class="feat"><span class="feat__k">Compliance</span><h4>Defensible hour records</h4><p>Weekly presence assembled automatically into records a facility can present to a regulator, an owner or a board without reconstructing anything by hand.</p></div>
+        <div class="feat"><span class="feat__k">Coverage</span><h4>Live shift board</h4><p>Every department, every shift, who is on and who is missing — visible now rather than at the end of the month.</p></div>
+        <div class="feat"><span class="feat__k">Communication</span><h4>Direct broadcast</h4><p>Leadership reaches every member of staff at once, including teams no memo has ever reached, with no intermediary in between.</p></div>
+        <div class="feat"><span class="feat__k">Workflow</span><h4>Leave and incidents</h4><p>Leave requests and incident reports move through defined approval paths, leaving a trail instead of a group chat.</p></div>
+        <div class="feat"><span class="feat__k">Equity</span><h4>Kiosk access</h4><p>A PIN terminal for staff without smartphones. Cleaning, security and support teams are part of the system from day one — not a later phase.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRINCIPLES ============================ -->
+<section class="sec sec--canvas">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Our approach</span>
+      <h2>We never build technology because it is new. We build it because it solves a real healthcare problem.</h2>
+    </div>
+    <div class="prin">
+      <div class="prin__i rv"><span class="k">01</span><h3>Problem-led</h3><p>Every product starts with a problem someone actually has, described in their own words.</p></div>
+      <div class="prin__i rv rv-d1"><span class="k">02</span><h3>Clinically grounded</h3><p>Built from real clinical experience and workflows observed on the ground, not assumed.</p></div>
+      <div class="prin__i rv rv-d2"><span class="k">03</span><h3>Trust by design</h3><p>Every feature should increase trust, accountability, transparency or reliability.</p></div>
+      <div class="prin__i rv rv-d3"><span class="k">04</span><h3>Equity by design</h3><p>Technology should reduce barriers, not create new ones — kiosks, plain language, inclusive workflows.</p></div>
+      <div class="prin__i rv rv-d4"><span class="k">05</span><h3>Continuous evolution</h3><p>Healthcare changes. So must we. We listen, learn and improve without waiting for permission.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STORY ============================ -->
+<section class="sec" id="story">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Our story</span>
+      <h2>From clinical practice to digital infrastructure.</h2>
+      <p class="lede">Tiru did not begin as a company. It began as two small tools built to fix problems that kept getting in the way of care.</p>
+    </div>
+
+    <div class="story">
+      <div class="rv">
+        <blockquote class="quote">
+          I chose digital health because improving one system can improve the lives of thousands of patients.
+          <cite>Dr. Anteneh Tirusew · Founder</cite>
+        </blockquote>
+        <p class="lede" style="margin-top:28px;font-size:15.4px">Five years in private practice — outpatient, emergency, inpatient and night duty — followed by physician coordination, healthcare operations, and work on one of Ethiopia's early EMR-integrated telemedicine platforms. Tiru is the same commitment to healthcare, applied at the level of systems rather than single encounters.</p>
+      </div>
+
+      <div class="time rv rv-d1">
+        <div class="time__i"><div class="time__y">2021</div><div class="time__c"><b>Clinical practice</b><p>Medical training completed; years of private practice across outpatient, emergency, inpatient and night-duty care.</p></div></div>
+        <div class="time__i"><div class="time__y">2022</div><div class="time__c"><b>Digital health, first-hand</b><p>Operations management and teleconsultation on an EMR-integrated telemedicine platform — including a women's health programme reaching underserved communities.</p></div></div>
+        <div class="time__i"><div class="time__y">First tools</div><div class="time__c"><b>Two small internal systems</b><p>A physician duty board that generated shift schedules automatically, and a referral map of private facilities across Addis Ababa.</p></div></div>
+        <div class="time__i"><div class="time__y">Fellowship</div><div class="time__c"><b>Problems validated properly</b><p>Through the Africa Healthcare Innovation Fellowship: testing the problems against other innovators before scaling any solution.</p></div></div>
+        <div class="time__i"><div class="time__y">2026</div><div class="time__c"><b>Tiru Health</b><p>Two internal tools become two platforms — Tiru Medical Directory and Tiru Ops — under one brand and one standard.</p></div></div>
+      </div>
+    </div>
+
+    <!-- ---------------- meet our team ---------------- -->
+    <div class="team">
+      <div class="head rv">
+        <span class="eyebrow">Meet our team</span>
+        <h2>A small team, with deep ownership.</h2>
+        <p class="lede">Tiru is built by people who have worked inside the problems they are solving.</p>
+      </div>
+
+      <div class="teamgrid">
+        <article class="member rv">
+          <img class="member__ph" src="data:image/jpeg;base64,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" alt="Dr. Anteneh Tirusew, MD, founder of Tiru Health" width="480" height="600" loading="lazy" decoding="async">
+          <div>
+            <span class="member__role">Founder · Clinical &amp; product lead</span>
+            <h3>Dr. Anteneh Tirusew, MD</h3>
+            <p>General Practitioner and digital health innovator. Both Tiru platforms — the Medical Directory and Tiru Ops — were designed and built from scratch by Dr. Anteneh, from the first problem statement through to the product in use today.</p>
+            <div class="member__links">
+              <a class="tlink" href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="tlink" href="mailto:hello@tiruhealth.com">Get in touch</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="member rv rv-d1">
+          <div class="member__ph member__ph--initials" aria-hidden="true">YM</div>
+          <div>
+            <span class="member__role">Technical lead</span>
+            <h3>Yohanes Mekuria</h3>
+            <p>Technical lead across both platforms — engineering, infrastructure and the reliability work that keeps healthcare data accurate, available and safe to depend on.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ TRUST ============================ -->
+<section class="sec sec--canvas" id="trust">
+  <div class="wrap prom">
+    <div class="rv">
+      <span class="eyebrow">Our promises</span>
+      <h2 style="margin:14px 0 16px">Trust is not a feature. It is the foundation.</h2>
+      <p class="lede">Three commitments that will not change as Tiru grows — and one line we will not cross: the interests of patients and the integrity of healthcare information come before our own commercial interests.</p>
+
+      <div class="promlist">
+        <div class="promlist__i"><span class="k">One</span><div><b>Trust</b><p>Healthcare information people can rely on — verified, current, and never reordered for payment.</p></div></div>
+        <div class="promlist__i"><span class="k">Two</span><div><b>Access</b><p>Finding and comparing healthcare providers stays free and open to the public, permanently.</p></div></div>
+        <div class="promlist__i"><span class="k">Three</span><div><b>Quality</b><p>Tools that help providers continuously improve how care is delivered, not merely measure them.</p></div></div>
+      </div>
+    </div>
+
+    <div class="reach rv rv-d1">
+      <div class="reach__title">Where we are going</div>
+      <div class="reach__steps">
+        <div class="reach__s now"><span class="dot"></span><div><b>Addis Ababa</b><span>105+ private facilities mapped · Tiru Ops in facility pilots</span></div></div>
+        <div class="reach__s"><span class="dot"></span><div><b>Ethiopia</b><span>Regional cities, one verified facility at a time</span></div></div>
+        <div class="reach__s soon"><span class="dot"></span><div><b>East Africa</b><span>The same standard, adapted to each health system</span></div></div>
+        <div class="reach__s soon"><span class="dot"></span><div><b>Africa</b><span>Trusted healthcare infrastructure, continent-wide</span></div></div>
+      </div>
+      <p class="reach__note">Growth is deliberate. We earn trust before we seek scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PARTNERS ============================ -->
+<section class="sec sec--alt" id="partner">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Who we work with</span>
+      <h2>Help us build better healthcare.</h2>
+      <p class="lede">Tiru is built through collaboration — with the people who deliver care, the institutions that fund and shape it, and the professionals who make it work every day.</p>
+    </div>
+
+    <div class="partners">
+      <article class="partner rv">
+        <h4>Healthcare providers</h4>
+        <p>Claim your listing, reach the people searching for your services, and run your operations with real visibility.</p>
+        <a class="tlink" href="mailto:hello@tiruhealth.com?subject=Provider%20enquiry">Talk to us</a>
+      </article>
+      <article class="partner rv rv-d1">
+        <h4>Healthcare professionals</h4>
+        <p>Be findable by name and specialty, and help shape the tools built for the work you actually do.</p>
+        <a class="tlink" href="mailto:hello@tiruhealth.com?subject=Professional%20enquiry">Get listed</a>
+      </article>
+      <article class="partner rv rv-d2">
+        <h4>Investors &amp; accelerators</h4>
+        <p>Back digital infrastructure with live products, real users and a founder who has worked the problem from inside.</p>
+        <a class="tlink" href="mailto:hello@tiruhealth.com?subject=Investment%20enquiry">Request the deck</a>
+      </article>
+      <article class="partner rv rv-d3">
+        <h4>Government &amp; development partners</h4>
+        <p>Aggregated, anonymised insight into healthcare access patterns — and a trusted channel for public health communication.</p>
+        <a class="tlink" href="mailto:hello@tiruhealth.com?subject=Partnership%20enquiry">Explore collaboration</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="sec cta">
+  <div class="wrap cta__in rv">
+    <h2>One problem. One solution. One step at a time.</h2>
+    <p>Whether you run a facility, practise in one, or fund the systems behind them — tell us which problem is costing you the most right now.</p>
+    <div class="cta__row">
+      <a class="btn btn--gold" href="mailto:hello@tiruhealth.com?subject=Partnering%20with%20Tiru%20Health">Partner with Tiru
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--ghost" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Open the Directory</a>
+    </div>
+    <div class="cta__mail">
+      <a href="mailto:hello@tiruhealth.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+        hello@tiruhealth.com</a>
+      <a href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21h-4V9Z"/></svg>
+        LinkedIn</a>
+      <span>Addis Ababa, Ethiopia</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot__b">
+        <a class="brand" href="#top">
+          <span class="brand__mark" aria-hidden="true" lang="am">ጥሩ</span>
+          <span class="brand__name"><b>Tiru</b> <i>Health</i></span>
+        </a>
+        <p>Building trusted digital infrastructure for healthcare — starting where healthcare is delivered.</p>
+      </div>
+      <div>
+        <h5>Platforms</h5>
+        <ul>
+          <li><a href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Tiru Medical Directory</a></li>
+          <li><a href="#platforms">Tiru Ops</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#story">Our story</a></li>
+          <li><a href="#trust">Our promises</a></li>
+          <li><a href="#partner">Partnerships</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@tiruhealth.com">hello@tiruhealth.com</a></li>
+          <li><a href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#partner">Addis Ababa, Ethiopia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>© 2026 Tiru Health. All rights reserved.</span>
+      <span lang="am" style="font-family:var(--ethiopic)">ጥሩ — good, of quality.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ MOBILE ACTION BAR ============================ -->
+<div class="mbar" id="mbar" aria-label="Quick actions">
+  <a class="btn btn--solid" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Find care</a>
+  <a class="btn btn--line" href="#partner">For facilities</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  /* ---------- theme ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var metaTheme = document.getElementById('metaTheme');
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    metaTheme.setAttribute('content', t === 'dark' ? '#071A18' : '#FCFDFC');
+    themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    try{ localStorage.setItem('tiru-theme', t); }catch(e){}
+  }
+  applyTheme(root.getAttribute('data-theme') || 'light');
+  themeBtn.addEventListener('click', function(){
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  /* follow the system only while the visitor has not chosen */
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  var listener = function(e){
+    var saved = null;
+    try{ saved = localStorage.getItem('tiru-theme'); }catch(err){}
+    if(!saved) applyTheme(e.matches ? 'dark' : 'light');
+  };
+  if (mq.addEventListener) mq.addEventListener('change', listener);
+  else if (mq.addListener) mq.addListener(listener);
+
+  /* ---------- nav + progress + mobile bar ---------- */
+  var nav = document.getElementById('nav'),
+      bar = document.getElementById('progress'),
+      mbar = document.getElementById('mbar'),
+      lastY = 0;
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle('solid', y > 30);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    /* show quick actions once past the hero, hide near the footer CTA */
+    var showFrom = window.innerHeight * 0.85;
+    mbar.classList.toggle('on', y > showFrom && y < h - 420);
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- drawer ---------- */
+  var burger = document.getElementById('burger'), drawer = document.getElementById('drawer');
+  function closeDrawer(){
+    drawer.classList.remove('on'); burger.classList.remove('on');
+    burger.setAttribute('aria-expanded','false');
+  }
+  burger.addEventListener('click', function(){
+    var open = drawer.classList.toggle('on');
+    burger.classList.toggle('on', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDrawer); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDrawer(); });
+
+  /* ---------- reveal ---------- */
+  var items = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- counters ---------- */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '+';
+    if (reduce){ el.textContent = target + suffix; return; }
+    var started = false;
+    function run(){
+      if (started) return; started = true;
+      var t0 = performance.now(), dur = 1400;
+      (function step(now){
+        var p = Math.min((now - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + (p === 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+    if ('IntersectionObserver' in window){
+      var o = new IntersectionObserver(function(en){
+        en.forEach(function(e){ if (e.isIntersecting){ run(); o.disconnect(); } });
+      }, {threshold:0.4});
+      o.observe(el);
+    } else { run(); }
+  });
+
+  /* ---------- tab groups (audience + capabilities) ---------- */
+  function wireTabs(tabSel, paneSel, tabAttr, paneAttr){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(tabSel));
+    var panes = Array.prototype.slice.call(document.querySelectorAll(paneSel));
+    tabs.forEach(function(btn, i){
+      btn.addEventListener('click', function(){
+        var key = btn.getAttribute(tabAttr);
+        tabs.forEach(function(b){
+          var on = b === btn;
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panes.forEach(function(p){ p.classList.toggle('on', p.getAttribute(paneAttr) === key); });
+      });
+      btn.addEventListener('keydown', function(e){
+        var n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+        if (n === null) return;
+        e.preventDefault();
+        var t = tabs[(n + tabs.length) % tabs.length];
+        t.focus(); t.click();
+      });
+    });
+  }
+  wireTabs('.aud__tab', '.aud__pane', 'data-aud', 'data-pane');
+  wireTabs('.tab', '.tabpane', 'data-tab', 'data-tabpane');
+})();
+</script>
+</body>
+</html>
