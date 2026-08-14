@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Tiru Health — Trusted digital infrastructure for healthcare</title>
-<meta name="description" content="Find trusted healthcare across Addis Ababa with Tiru Medical Directory, and run stronger facilities with Tiru Ops. Digital health infrastructure built by clinicians in Ethiopia." />
+<meta name="description" content="Tiru Medical Directory helps you trace the right care in less than three clicks across Addis Ababa. Tiru Ops gives health facilities real-time visibility of their operations. Built by clinicians in Ethiopia." />
 <meta name="theme-color" content="#FCFDFC" id="metaTheme" />
 <meta name="color-scheme" content="light dark" />
 <meta property="og:title" content="Tiru Health — Trusted digital infrastructure for healthcare" />
-<meta property="og:description" content="Tiru Medical Directory helps people find trusted care. Tiru Ops helps facilities deliver it. Built by clinicians in Addis Ababa." />
+<meta property="og:description" content="Trace the right care in less than three clicks. Tiru Medical Directory maps private healthcare across Addis Ababa; Tiru Ops gives facilities real-time operational visibility." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tiruhealth.com" />
 <meta property="og:locale" content="en" />
@@ -336,7 +336,8 @@ p{margin:0}
 .plat__tag i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
 .plat--dir .plat__tag{color:var(--accent)}
 .plat--ops .plat__tag{color:var(--gold)}
-.plat h3{font-size:clamp(1.45rem,4.6vw,2rem);letter-spacing:-.025em}
+.plat h3{font-size:clamp(1.45rem,4.6vw,2rem);letter-spacing:-.025em;margin-bottom:-4px}
+.plat__strap{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--accent);line-height:1.4}
 .plat p{color:var(--muted);font-size:15.4px}
 .plat__list{list-style:none;padding:0;margin:2px 0 0;display:grid;gap:9px}
 .plat__list li{display:flex;gap:10px;font-size:14.4px;color:var(--muted);align-items:flex-start}
@@ -367,16 +368,21 @@ p{margin:0}
 }
 .member:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 22px 46px -34px var(--shadow)}
 .member__ph{
-  width:100%;max-width:190px;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;
+  width:100%;height:auto;max-width:200px;aspect-ratio:4/5;
+  object-fit:cover;object-position:50% 22%;
   border-radius:14px;border:1px solid var(--line);background:var(--bg-alt);
+  align-self:start;
 }
 .member__ph--initials{
-  display:grid;place-items:center;max-width:120px;aspect-ratio:1;
-  background:var(--forest);color:var(--gold);font-family:var(--display);font-size:30px;letter-spacing:-.02em;
+  display:grid;place-items:center;height:auto;max-width:200px;aspect-ratio:4/5;
+  background:linear-gradient(160deg,var(--forest),#0A3229);
+  color:var(--gold);font-family:var(--display);font-size:34px;letter-spacing:-.02em;
 }
 .member__role{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:9px}
 .member h3{font-size:1.3rem;margin-bottom:9px}
-.member p{font-size:14.6px;color:var(--muted)}
+.member p{font-size:14.5px;color:var(--muted)}
+.member p + p{margin-top:11px}
+.teamgrid{align-items:stretch}
 .member__links{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
 
 /* product previews */
@@ -554,9 +560,8 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
   .mock{padding-top:26px}
   .plat__body{padding-top:30px;padding-bottom:30px}
   .time__i{grid-template-columns:104px minmax(0,1fr);gap:22px;align-items:start}
-  .member{grid-template-columns:150px minmax(0,1fr);gap:22px;padding:24px}
-  .member__ph{max-width:150px}
-  .member__ph--initials{max-width:150px;aspect-ratio:4/5}
+  .member{grid-template-columns:156px minmax(0,1fr);gap:22px;padding:24px}
+  .member__ph,.member__ph--initials{max-width:156px}
   .quote{padding-left:26px}
   .cta__mail{flex-direction:row;gap:26px;flex-wrap:wrap}
   .foot{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -690,7 +695,7 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
 
         <div class="aud__panel">
           <div class="aud__pane on" id="aud-pat" role="tabpanel" aria-labelledby="tab-pat" data-pane="pat" tabindex="0">
-            <p>Find a clinic, pharmacy, laboratory or specialist across Addis Ababa — with services, opening hours, payment options and location kept current by the providers themselves. Free, and always will be.</p>
+            <p>Trace the right care in less than three clicks — a clinic, pharmacy, laboratory or specialist across Addis Ababa, with services, opening hours, payment options and location kept current by the providers themselves. Free, and always will be.</p>
             <div class="row">
               <a class="btn btn--gold" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Find care near you <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
               <a class="btn btn--ghost" href="#platforms">How it works</a>
@@ -808,6 +813,7 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
         <div class="plat__body">
           <div class="plat__tag"><i></i> Care navigation · free &amp; public</div>
           <h3>Tiru Medical Directory</h3>
+          <p class="plat__strap">Helping you trace the right care in less than three clicks.</p>
           <p>An open map of private healthcare in Addis Ababa — hospitals, clinics, pharmacies, laboratories, imaging centres, home care and ambulance services, with the specialists who practise in them.</p>
           <ul class="plat__list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg> 105+ private health facilities mapped, with results sorted by distance from you</li>
@@ -979,7 +985,9 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
           <div>
             <span class="member__role">Founder · Clinical &amp; product lead</span>
             <h3>Dr. Anteneh Tirusew, MD</h3>
-            <p>General Practitioner and digital health innovator. Both Tiru platforms — the Medical Directory and Tiru Ops — were designed and built from scratch by Dr. Anteneh, from the first problem statement through to the product in use today.</p>
+            <p>General Practitioner and digital health innovator. He completed undergraduate medical school at the University of Gondar and joined American Medical Center, a renowned private health centre in Addis Ababa. Through its sister company he went on to work on the development, operations and teleconsultation delivery of HabariDOC, a ground-breaking telemedicine app.</p>
+            <p>His years at AMC ran from OPD clinical commitments and night-shift coverage through to leadership — physician schedule coordination and CPD director among them. That mix of clinical, operational and leadership experience is precisely what both Tiru platforms are built on.</p>
+            <p>Both platforms were designed and built from scratch by Dr. Anteneh — this website included.</p>
             <div class="member__links">
               <a class="tlink" href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a>
               <a class="tlink" href="mailto:hello@tiruhealth.com">Get in touch</a>
@@ -990,9 +998,10 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
         <article class="member rv rv-d1">
           <div class="member__ph member__ph--initials" aria-hidden="true">YM</div>
           <div>
-            <span class="member__role">Technical lead</span>
-            <h3>Yohanes Mekuria</h3>
-            <p>Technical lead across both platforms — engineering, infrastructure and the reliability work that keeps healthcare data accurate, available and safe to depend on.</p>
+            <span class="member__role">Technical lead · Full-stack developer</span>
+            <h3>Yohana Mekuria Tesfaye</h3>
+            <p>Software engineer and full-stack developer, technical lead at Tiru Health. A software engineering graduate of Addis Ababa Science and Technology University, she has shipped production systems at scale — an e-commerce delivery platform serving 100,000+ users, payment integrations and admin tooling handling millions of birr in transactions, and an AI maternal-health monitoring system placed third nationally at the Gaithon competition.</p>
+            <p>At Tiru she leads the engineering and infrastructure work that keeps healthcare data accurate, available and safe to depend on.</p>
           </div>
         </article>
       </div>
@@ -1119,6 +1128,7 @@ footer{background:var(--canvas);color:var(--canvas-muted);padding:56px 0 28px}
         <ul>
           <li><a href="mailto:hello@tiruhealth.com">hello@tiruhealth.com</a></li>
           <li><a href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/antenehtir/tiruhealth-site" target="_blank" rel="noopener">This site on GitHub</a></li>
           <li><a href="#partner">Addis Ababa, Ethiopia</a></li>
         </ul>
       </div>
