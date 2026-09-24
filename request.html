@@ -122,7 +122,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-size:13.5px;color:va
           <div class="f" id="f-org"><label for="org">Organisation</label><input id="org" name="org" autocomplete="organization" maxlength="160" required><span class="err">Please enter your organisation.</span></div>
           <div class="f"><label for="role">Role <span>(optional)</span></label><input id="role" name="role" autocomplete="organization-title" maxlength="120"></div>
         </div>
-        <div class="f"><label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+        <div class="f"><label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="off" placeholder="e.g. +251 9XX XXX XXX" maxlength="40"></div>
         <div class="f" id="f-msg"><label for="message">Message</label><textarea id="message" name="message" maxlength="3000" required></textarea><span class="err">Please add a short message.</span></div>
         <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="actions">
