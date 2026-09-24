@@ -1,0 +1,8 @@
+{
+  "name": "tiruhealth-site",
+  "private": true,
+  "description": "tiruhealth.com landing page with a request form mail function",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

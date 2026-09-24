@@ -154,6 +154,11 @@ section{padding:110px 0}
 .aud-link .arrow{color:var(--gold)}.aud-link.primary .arrow{color:inherit}
 .lock{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:6px;background:var(--gold-soft);color:var(--gold);margin-left:6px;vertical-align:1px}
 
+.next{margin-top:22px;display:flex;align-items:center;gap:16px;padding:18px 24px;border-radius:16px;border:1px dashed var(--line);background:var(--surface)}
+.next p{color:var(--muted);font-size:16px}
+.next-tag{flex:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);padding:5px 10px;border-radius:999px}
+@media (max-width:560px){.next{flex-direction:column;align-items:flex-start}}
+
 /* platforms */
 .platform{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .platform + .platform{margin-top:120px}
@@ -174,9 +179,9 @@ section{padding:110px 0}
 .p-visual .ph{width:190px;border-radius:26px;background:#061513;padding:7px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
 .p-visual .ph img{border-radius:20px}
 .p-visual .ph:nth-child(2){transform:translateY(-34px)}
-.p-visual .screen{width:100%;border-radius:12px;background:#0F2B28;padding:8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.p-visual .screen{width:84%;justify-self:start;border-radius:12px;background:#0F2B28;padding:8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
 .p-visual .screen img{border-radius:6px}
-.p-visual .ph-small{position:absolute;right:26px;bottom:-40px;width:150px;border-radius:22px;background:#061513;padding:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.p-visual .ph-small{position:absolute;right:22px;bottom:22px;width:140px;border-radius:22px;background:#061513;padding:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
 .p-visual .ph-small img{border-radius:17px}
 
 /* story */
@@ -247,7 +252,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   .phone{min-width:130px}
   .p-visual{padding:28px 20px;min-height:380px}
   .p-visual .ph{width:140px}
-  .p-visual .ph-small{width:108px;right:14px;bottom:-24px;border-radius:18px;padding:5px}
+  .p-visual .ph-small{width:100px;right:12px;bottom:12px;border-radius:18px;padding:5px}
   .p-visual .ph-small img{border-radius:14px}
   .stats{margin-top:56px}
 }
@@ -335,7 +340,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <div class="aud-links">
           <a class="aud-link primary" href="https://tiru-med-directory.vercel.app/provider/signup" target="_blank" rel="noopener"><div>List your facility<small>Free, guided, a few minutes</small></div><span class="arrow">→</span></a>
           <a class="aud-link" href="https://tiru-med-directory.vercel.app/provider/claim" target="_blank" rel="noopener"><div>Claim your existing listing<small>Already on the Directory? Take control</small></div><span class="arrow">→</span></a>
-          <a class="aud-link" href="mailto:anteneh@tiruhealth.com?subject=Request%3A%20Tiru%20Ops%20pitch%20deck&body=Hello%20Dr.%20Anteneh%2C%0A%0AI%20would%20like%20to%20receive%20the%20Tiru%20Ops%20pitch%20deck.%0A%0AName%3A%0AOrganisation%3A%0ARole%3A%0A%0AThank%20you."><div>Request the Tiru Ops pitch deck<small>Sent to you by email</small></div><span class="arrow">→</span></a>
+          <a class="aud-link" href="/request?type=deck"><div>Request the Tiru Ops pitch deck<small>Sent to you by email</small></div><span class="arrow">→</span></a>
         </div>
       </article>
       <article class="aud-card reveal">
@@ -343,9 +348,9 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <h3>Partners &amp; investors</h3>
         <p>Investors, funders, accelerators and partners — see where we are going and how to build it with us.</p>
         <div class="aud-links">
-          <a class="aud-link primary" href="https://tiru-directory-pitch-deck.vercel.app" target="_blank" rel="noopener"><div>View the Medical Directory pitch deck<small>Opens in your browser</small></div><span class="arrow">→</span></a>
-          <a class="aud-link" href="mailto:anteneh@tiruhealth.com?subject=Request%3A%20Tiru%20Ops%20pitch%20deck&body=Hello%20Dr.%20Anteneh%2C%0A%0AI%20would%20like%20to%20receive%20the%20Tiru%20Ops%20pitch%20deck.%0A%0AName%3A%0AOrganisation%3A%0ARole%3A%0A%0AThank%20you."><div>Request the Tiru Ops pitch deck <span class="lock">Confidential</span><small>We reply with it by email, same day</small></div><span class="arrow">→</span></a>
-          <a class="aud-link" href="mailto:anteneh@tiruhealth.com?subject=Partnership%20%2F%20investment%20%E2%80%94%20Tiru%20Health"><div>Start a conversation<small>anteneh@tiruhealth.com</small></div><span class="arrow">→</span></a>
+          <a class="aud-link primary" href="https://deck.tiruhealth.com" target="_blank" rel="noopener"><div>View the Medical Directory pitch deck<small>Opens in your browser</small></div><span class="arrow">→</span></a>
+          <a class="aud-link" href="/request?type=deck"><div>Request the Tiru Ops pitch deck <span class="lock">Confidential</span><small>We reply with it by email, same day</small></div><span class="arrow">→</span></a>
+          <a class="aud-link" href="/request?type=partnership"><div>Start a conversation<small>anteneh@tiruhealth.com</small></div><span class="arrow">→</span></a>
         </div>
       </article>
     </div>
@@ -357,14 +362,15 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Why Tiru exists</span>
-      <h2>Healthcare rarely fails for lack of expertise. It fails in the gaps.</h2>
-      <p class="lead">Years at the bedside surfaced the same three gaps again and again — between people, information and systems. Tiru was built to close them.</p>
+      <h2>Quality care needs the right people in place, and the right information in reach.</h2>
+      <p class="lead">Tiru exists to raise the quality of care — helping providers keep their teams present and connected, keeping service information current for the public, and helping every health seeker find the right care nearby, whenever they need it.</p>
     </div>
     <div class="problems">
-      <article class="card reveal"><span class="num">01</span><h3>Finding care</h3><p>No one should need six phone calls to learn which clinic is open, what it offers, or how to get there.</p><div class="ans">→ Tiru Medical Directory</div></article>
-      <article class="card reveal"><span class="num">02</span><h3>Trusting information</h3><p>A health decision deserves information kept current by the providers themselves — and open to correction.</p><div class="ans">→ Verified, facility-managed listings</div></article>
-      <article class="card reveal"><span class="num">03</span><h3>Proving delivery</h3><p>Facilities must prove coverage and staff presence, often with paper registers never built for the question.</p><div class="ans">→ Tiru Ops</div></article>
+      <article class="card reveal"><span class="num">01</span><h3>Care teams on time, in touch</h3><p>Care starts on schedule when staff are verifiably on site and leadership can reach every team member directly. Presence and communication become something a facility can see, trust and act on.</p><div class="ans">→ Tiru Ops</div></article>
+      <article class="card reveal"><span class="num">02</span><h3>Information that stays current</h3><p>When facilities keep their own services, hours and payment options up to date, patients arrive expecting what is truly available — fewer disputes, fewer wasted trips, and a reputation that holds.</p><div class="ans">→ Facility-managed listings</div></article>
+      <article class="card reveal"><span class="num">03</span><h3>The right care, nearest first</h3><p>Real-time information on facilities, specialists, tests and medicines, sorted by distance — so the right care is found the moment it is needed, not after hours of phone calls.</p><div class="ans">→ Tiru Medical Directory</div></article>
     </div>
+    <div class="next reveal"><span class="next-tag">Next</span><p>Connecting health seekers directly to timely care — trusted booking and referral with the providers nearest to them.</p></div>
   </div>
 </section>
 
@@ -396,7 +402,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         </ul>
         <div class="p-ctas">
           <a class="btn btn-solid" href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Open the Directory <span class="arrow">→</span></a>
-          <a class="btn btn-line" href="https://tiru-directory-pitch-deck.vercel.app" target="_blank" rel="noopener">View pitch deck</a>
+          <a class="btn btn-line" href="https://deck.tiruhealth.com" target="_blank" rel="noopener">View pitch deck</a>
         </div>
       </div>
     </div>
@@ -417,8 +423,8 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A kiosk so staff without smartphones are never left out</li>
         </ul>
         <div class="p-ctas">
-          <a class="btn btn-solid" href="mailto:anteneh@tiruhealth.com?subject=Tiru%20Ops%20walkthrough">Book a walkthrough <span class="arrow">→</span></a>
-          <a class="btn btn-line" href="mailto:anteneh@tiruhealth.com?subject=Request%3A%20Tiru%20Ops%20pitch%20deck&body=Hello%20Dr.%20Anteneh%2C%0A%0AI%20would%20like%20to%20receive%20the%20Tiru%20Ops%20pitch%20deck.%0A%0AName%3A%0AOrganisation%3A%0ARole%3A%0A%0AThank%20you.">Request pitch deck</a>
+          <a class="btn btn-solid" href="/request?type=walkthrough">Book a walkthrough <span class="arrow">→</span></a>
+          <a class="btn btn-line" href="/request?type=deck">Request pitch deck</a>
         </div>
       </div>
     </div>
@@ -434,6 +440,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       <div class="who"><div class="avatar">AT</div><div><b>Dr. Anteneh Tirusew</b><span>Founder · General Practitioner</span></div></div>
       <p class="body">Tiru did not begin as a company. It began as two small tools, built to fix problems that kept getting in the way of care — a duty board that planned physician shifts, and a referral map of private facilities across Addis Ababa.</p>
       <p class="body">“Tiru” means <em>good</em> in Amharic — a byword for quality. It is the standard we hold every product to.</p>
+      <a class="btn btn-line" href="https://anteneh.tiruhealth.com" target="_blank" rel="noopener" style="margin-top:10px">Meet the founder <span class="arrow">→</span></a>
     </div>
     <ol class="timeline reveal">
       <li><small>Clinical practice</small><h4>Five years at the bedside</h4><p>Outpatient, emergency, inpatient and night duty in private facilities.</p></li>
@@ -469,9 +476,9 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <p>Whether you run a facility, fund health innovation, or want to build alongside us — we would like to hear from you.</p>
       </div>
       <div class="paths">
-        <a class="path" href="mailto:anteneh@tiruhealth.com"><div><b>anteneh@tiruhealth.com</b><small>We reply within one working day</small></div><span class="arrow">→</span></a>
+        <a class="path" href="/request?type=general"><div><b>anteneh@tiruhealth.com</b><small>Send us a message — we reply within one working day</small></div><span class="arrow">→</span></a>
         <a class="path" href="tel:+251912412707"><div><b>+251 912 412 707</b><small>Addis Ababa, Ethiopia</small></div><span class="arrow">→</span></a>
-        <a class="path" href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener"><div><b>LinkedIn</b><small>Dr. Anteneh Tirusew</small></div><span class="arrow">→</span></a>
+        <a class="path" href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener"><div><b>LinkedIn</b><small>Anteneh Tirusew, MD</small></div><span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -487,8 +494,8 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       </div>
       <div class="foot-links">
         <div><h5>Platforms</h5><a href="https://tiru-med-directory.vercel.app" target="_blank" rel="noopener">Medical Directory</a><a href="#platforms">Tiru Ops</a></div>
-        <div><h5>Pitch decks</h5><a href="https://tiru-directory-pitch-deck.vercel.app" target="_blank" rel="noopener">Medical Directory</a><a href="mailto:anteneh@tiruhealth.com?subject=Request%3A%20Tiru%20Ops%20pitch%20deck&body=Hello%20Dr.%20Anteneh%2C%0A%0AI%20would%20like%20to%20receive%20the%20Tiru%20Ops%20pitch%20deck.%0A%0AName%3A%0AOrganisation%3A%0ARole%3A%0A%0AThank%20you.">Tiru Ops (on request)</a></div>
-        <div><h5>Contact</h5><a href="mailto:anteneh@tiruhealth.com">anteneh@tiruhealth.com</a><a href="tel:+251912412707">+251 912 412 707</a><a href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <div><h5>Pitch decks</h5><a href="https://deck.tiruhealth.com" target="_blank" rel="noopener">Medical Directory</a><a href="/request?type=deck">Tiru Ops (on request)</a></div>
+        <div><h5>Contact</h5><a href="/request?type=general">anteneh@tiruhealth.com</a><a href="tel:+251912412707">+251 912 412 707</a><a href="https://anteneh.tiruhealth.com" target="_blank" rel="noopener">Founder profile</a><a href="https://www.linkedin.com/in/anteneh-tirusew-md-b20508212/" target="_blank" rel="noopener">LinkedIn</a></div>
       </div>
     </div>
     <div class="legal"><span>© <span id="yr">2026</span> Tiru Health. All rights reserved.</span><span>Tiru — good, of quality.</span></div>
